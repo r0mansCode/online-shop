@@ -14,7 +14,7 @@ export class Men extends Component {
     render() {
         return (
             <div>
-                Products
+                Men
                 <div className="products">
                     { products }
                 </div>
