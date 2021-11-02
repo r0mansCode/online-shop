@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apollo/client';
+import { onError } from '@apollo/client/link/error';
 import './App.scss';
 import './Components/Navbar/Navbar';
 import Navbar from './Components/Navbar/Navbar';
@@ -6,9 +8,17 @@ import { Kids } from './Categories/Kids/Kids';
 import { Men } from './Categories/Men/Men';
 import { Women } from './Categories/Women/Women';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import GetProducts from './Components/GetProducts/GetProducts';
 
-const link = "https://rukminim1.flixcart.com/image/714/857/k3xcdjk0pkrrdj/shoe/m/u/j/10-ds-1603-d-sneakerz-dss-16603-white-10-original-imaf8uh4a7fecktf.jpeg?q=50"
-const shoe = <img src={link} className="shoesLogo" alt="Shoes" />
+const shoeLink = "https://rukminim1.flixcart.com/image/714/857/k3xcdjk0pkrrdj/shoe/m/u/j/10-ds-1603-d-sneakerz-dss-16603-white-10-original-imaf8uh4a7fecktf.jpeg?q=50"
+const shoe = <img src={shoeLink} className="shoesLogo" alt="Shoes" />
+
+const client = new ApolloClient({
+  uri: "http://localhost:4000/",
+  cache: new InMemoryCache()
+});
+
+
 
 class App extends Component {
   
@@ -41,9 +51,11 @@ class App extends Component {
   
   render() {
   return (
+    <ApolloProvider client={client}>
     <Router>
     <div className="App">
       <Navbar />
+      < GetProducts/>
       <Switch>
       <Route exact path="/">
         <Women productData={this.state.productData} />
@@ -57,7 +69,9 @@ class App extends Component {
       </Switch>
     </div>
     </Router>
+    </ApolloProvider>
   )}
+  
 }
 
 export default App;
