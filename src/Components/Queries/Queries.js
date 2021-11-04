@@ -7,6 +7,7 @@ query {
       products {
         id
         name
+        gallery
         description
         category
         prices {

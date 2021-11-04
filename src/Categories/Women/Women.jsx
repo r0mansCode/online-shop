@@ -7,9 +7,7 @@ export class Women extends Component {
             <div>
                 Women
                     <div>
-                {this.props.productData.map((productData) => 
-                { return <Product name={productData.name} price={productData.price} image={productData.image} />
-                })}
+
                     </div>
             </div>
         )
