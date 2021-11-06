@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { ApolloClient, InMemoryCache, useQuery, gql } from '@apollo/client';
 import { graphql } from '@apollo/client/react/hoc';
 import { getProductsQuery } from './Components/Queries/Queries';
 import './App.scss';
@@ -21,9 +20,9 @@ class App extends Component {
         return data.category.products.map(product => {
             return(
                 <section key={product.id}>
-                <img src={product.gallery[0]} />
+                <img src={product.gallery[0]} alt="productPicture" />
                 {product.name} 
-                {product.prices.map(pricing => <div>{pricing.amount}{pricing.currency}</div>)} 
+                {product.prices.map(pricing => <div key={pricing.currency}>{pricing.amount}{pricing.currency}</div>)} 
                 </section>
             );
         })
@@ -38,22 +37,20 @@ constructor (props) {
 
 
   render() {
+    // console.log(this.props);
   return (
     <Router>
     <div className="App">
       <Navbar />
-      <section id="product-list">
-          {this.displayProducts()}
-      </section>
       <Switch>
       <Route exact path="/">
-        <Women />
+        <Women data={this.props.data} />
       </Route>
       <Route exact path="/Men">
-        <Men />
+        <Men data={this.props.data} />
       </Route>
       <Route exact path="/Kids">
-        <Kids />
+        <Kids data={this.props.data} />
       </Route>
       </Switch>
     </div>

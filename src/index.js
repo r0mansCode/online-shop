@@ -4,7 +4,7 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ApolloProvider } from '@apollo/react-hooks';
-import { ApolloClient, InMemoryCache, useQuery, gql } from '@apollo/client';
+import { ApolloClient, InMemoryCache} from '@apollo/client';
 
 
 const client = new ApolloClient({

@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 
 export class Product extends Component {
-    render() {
-        return (
-            <div>
 
-            </div>
+    render() {
+        console.log(this.props);
+        return (
+        <div>
+        <section id="product-list">
+
+        </section>
+        </div>
         )
     }
 }
