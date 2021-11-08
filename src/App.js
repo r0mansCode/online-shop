@@ -22,8 +22,8 @@ constructor (props) {
   render() {
     console.log(this.props);
   return (
-    <Router>
-    <div className="App">
+    <Router >
+    <div>
       <Navbar />
       <Switch>
       <Route exact path="/">

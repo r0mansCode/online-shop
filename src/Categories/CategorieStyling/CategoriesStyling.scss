@@ -1,0 +1,67 @@
+
+
+.productSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-family: Raleway;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 160%;
+    color: #1D1F22;  
+    
+}
+
+.productImage {
+    margin: auto;
+  display: block;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.productPrice {
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 160%; 
+    text-align: left;
+    color: #1D1F22;
+}
+
+.productName{
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 300;  
+    color: #1D1F22;
+}
+
+.categoryName{
+font-family: Raleway;
+font-style: normal;
+font-weight: normal;
+font-size: 42px;
+line-height: 160%;
+/* identical to box height, or 67px */
+color: #1D1F22;
+
+}
+
+.categoryPage{
+    padding: 40px;
+}
+
+.productFrame__icon {
+    display: none;
+}
+
+.productFrame {
+    padding: 20px; 
+    &:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        cursor: pointer;
+    }   
+    &:hover &__icon{
+        display: block;         
+    }
+}

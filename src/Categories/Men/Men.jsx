@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { FaBeer } from 'react-icons/fa';
 
 
 export class Men extends Component {
@@ -11,14 +11,16 @@ export class Men extends Component {
         } else {
             return data.category.products.map(product => {
                 return(
-                    <section key={product.id}>
-                    <img src={product.gallery[0]} alt="productPicture" />
-                    {product.name} 
-                
-                    {product.prices.map((pricing, index) => (
-                        (index === 0) ? <div>{pricing.currency}{pricing.amount}</div> : null
-                    ))} 
-                    </section>
+                    <div className='productFrame' key={product.id}>
+                        <div><FaBeer className='productFrame__icon' /></div>
+                        <img className='productImage' src={product.gallery[0]} alt="productPicture" />
+                        <section className='productName'>
+                        {product.name} 
+                        </section>
+                        {product.prices.map((pricing, index) => (
+                            (index === 0) ? <div className='productPrice'>{pricing.currency}{pricing.amount}</div> : null
+                        ))} 
+                    </div>
                 );
             })
         }
@@ -26,9 +28,9 @@ export class Men extends Component {
 
     render() {
         return (
-            <div>
-                Men
-                    <div>
+            <div className='categoryPage'>
+                <h2 className='categoryName'>Men</h2>                  
+                    <div className='productSection'>
                     {this.displayProducts()}
                     </div>
             </div>
