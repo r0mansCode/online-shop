@@ -11,23 +11,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
 class App extends Component {
-  
-  displayProducts(){
-    var data = this.props.data;
-    if(data.loading){
-        return(<div>Loading products...</div>)
-    } else {
-        return data.category.products.map(product => {
-            return(
-                <section key={product.id}>
-                <img src={product.gallery[0]} alt="productPicture" />
-                {product.name} 
-                {product.prices.map(pricing => <div key={pricing.currency}>{pricing.amount}{pricing.currency}</div>)} 
-                </section>
-            );
-        })
-    }
-}
 
 constructor (props) {
   super(props);
@@ -37,7 +20,7 @@ constructor (props) {
 
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
   return (
     <Router>
     <div className="App">

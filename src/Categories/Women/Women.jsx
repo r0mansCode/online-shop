@@ -12,7 +12,10 @@ export class Women extends Component {
                     <section key={product.id}>
                     <img src={product.gallery[0]} alt="productPicture" />
                     {product.name} 
-                    {product.prices.map(pricing => <div key={pricing.currency}>{pricing.amount}{pricing.currency}</div>)} 
+                
+                    {product.prices.map((pricing, index) => (
+                        (index === 0) ? <div>{pricing.currency}{pricing.amount}</div> : null
+                    ))} 
                     </section>
                 );
             })
