@@ -50,6 +50,7 @@ color: #1D1F22;
 .categoryPage{
     padding-left: 41px;
     padding-right: 41px;
+    margin-bottom: 40px;
 }
 
 .productFrame__icon {
@@ -66,6 +67,7 @@ color: #1D1F22;
 }
 
 .productFrame {
+    text-decoration: none;
     padding: 20px; 
     &:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

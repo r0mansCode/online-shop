@@ -13,9 +13,8 @@ export class Navbar extends Component {
                <Link className="navBar__Category" to="/">WOMEN</Link>
                <Link className="navBar__Category" to="/Men">MEN</Link> 
                <Link className="navBar__Category" to="/Kids">KIDS</Link> 
-               {/* <span className="textt"><AiOutlineShopping/></span> */}
                <Link className="navBar__icon" to="/"><AiOutlineShopping  /></Link>
-               <Link className="navBar__icon2" to="/"><HiOutlineShoppingCart  /></Link>
+               <Link className="navBar__icon2" to="Cart"><HiOutlineShoppingCart  /></Link>
                </section>
             </nav>
         )
