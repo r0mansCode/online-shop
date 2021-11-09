@@ -1,0 +1,36 @@
+.navBar {
+    margin-top: 20px; 
+    margin-left: 25px;      
+    list-style-type: none;
+    overflow: hidden;
+    
+    &__Category {
+        font-family: 'Raleway', sans-serif;
+        color: rgb(0, 0, 0);
+        text-align: left;
+        padding: 16px;
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+            text-decoration-color: #5ECE7B;
+            color: #5ECE7B;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        margin-left: 30%;
+        color: #5ECE7B;
+        font-size: 32px;
+    }
+
+    &__icon2 {
+        position: absolute;
+        margin-left: 73%;
+        color: #000000;
+        font-size: 20px;
+    }
+}
+
+
+

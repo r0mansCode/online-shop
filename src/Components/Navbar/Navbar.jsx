@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './Navbar.scss';
+import { AiOutlineShopping } from 'react-icons/ai';
+import { HiOutlineShoppingCart } from 'react-icons/hi';
 
 export class Navbar extends Component {
     render() {
         return (
             <nav>
-               <Link to="/">WOMEN</Link>
-               <Link to="/Men">MEN</Link> 
-               <Link to="/Kids">KIDS</Link> 
+                
+                <section className="navBar">
+               <Link className="navBar__Category" to="/">WOMEN</Link>
+               <Link className="navBar__Category" to="/Men">MEN</Link> 
+               <Link className="navBar__Category" to="/Kids">KIDS</Link> 
+               {/* <span className="textt"><AiOutlineShopping/></span> */}
+               <Link className="navBar__icon" to="/"><AiOutlineShopping  /></Link>
+               <Link className="navBar__icon2" to="/"><HiOutlineShoppingCart  /></Link>
+               </section>
             </nav>
         )
     }

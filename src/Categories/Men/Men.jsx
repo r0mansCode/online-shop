@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { FaBeer } from 'react-icons/fa';
+import '../CategorieStyling/CategoriesStyling.scss';
+import { HiOutlineShoppingCart } from 'react-icons/hi';
 
 
 export class Men extends Component {
@@ -12,7 +13,7 @@ export class Men extends Component {
             return data.category.products.map(product => {
                 return(
                     <div className='productFrame' key={product.id}>
-                        <div><FaBeer className='productFrame__icon' /></div>
+                        <div><HiOutlineShoppingCart className='productFrame__icon' /></div>
                         <img className='productImage' src={product.gallery[0]} alt="productPicture" />
                         <section className='productName'>
                         {product.name} 
