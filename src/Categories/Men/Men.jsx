@@ -13,7 +13,8 @@ export class Men extends Component {
         } else {
             return data.category.products.map(product => {
                 return(
-                    <Link className='productFrame' to="ProductDescription" key={product.id}>
+                    <Link className='productFrame' key={product.id} to={product.id}>
+                    <div>
                         <div><HiOutlineShoppingCart className='productFrame__icon' /></div>
                         <img className='productImage' src={product.gallery[0]} alt="productPicture" />
                         <section className='productName'>
@@ -22,6 +23,7 @@ export class Men extends Component {
                         {product.prices.map((pricing, index) => (
                             (index === 0) ? <div className='productPrice' key={pricing.currency}>{pricing.currency}{pricing.amount}</div> : null
                         ))} 
+                    </div>
                     </Link>
                 );
             })
