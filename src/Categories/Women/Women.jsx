@@ -40,7 +40,7 @@ export class Women extends Component {
     }
 
     render() {
-        console.log(this.props.match)
+        console.log(this.state)
         return (
             <div className='categoryPage'>
                 <h2 className='categoryName'>Women</h2>                  

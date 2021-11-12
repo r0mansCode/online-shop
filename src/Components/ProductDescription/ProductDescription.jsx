@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router";
+// import Cart from '../Cart/Cart';
 
 
 export class ProductDescription extends Component {
 
-    displayProducts(){
+    constructor(props) {
+        super(props);
+        this.state = {
+            image: [],
+            name: [],
+            amount: []
+        }
+      
+      }
+
+      handleClick (e){
+          e.preventDefault();
+      }
+
+      displayProducts(){
         function converter(input) {
             return (input).replace(/<[^>]+>/g, '');
         }
@@ -21,7 +36,14 @@ export class ProductDescription extends Component {
                         <div>{converter(product.description)}</div>
                         </section>
                         {product.prices.map((pricing, index) => (
-                            (index === 0) ? <div className='productPrice' key={pricing.currency}>{pricing.currency}{pricing.amount}</div> : null
+                            (index === 0) ? <div className='productPrice' key={pricing.currency}>{pricing.currency}{pricing.amount}
+                                <div onClick={ this.handleClick.bind(this) }>
+                                <button onClick={ (e) => this.setState({image: this.state.image + product.gallery[0] , name: this.state.name + product.name , amount: this.state.amount + pricing.amount})}>
+                                ADD TO CART
+                                </button>
+                                </div>
+                            </div>
+                        : null
                         ))} 
                     </div>
                     : null
@@ -31,11 +53,13 @@ export class ProductDescription extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div>
                 <h2>Product Description</h2>
                 {this.displayProducts()}
+                <img src={this.state.image} />
+                <div>{this.state.name}</div>
+                <div>{this.state.amount}</div>
             </div>
         )
     }

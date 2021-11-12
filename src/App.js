@@ -14,27 +14,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
 
-  displayProducts(){
-    var data = this.props.data;
-    if(data.loading){
-        return(<div>Loading products...</div>)
-    } else {
-        return data.category.products.map(product => {
-            return(
-                <div key={product.id}>
-                    <img className='productImage' src={product.gallery[0]} alt="productPicture" />
-                    <section className='productName'>
-                    {product.name} 
-                    </section>
-                    {product.prices.map((pricing, index) => (
-                        (index === 0) ? <div className='productPrice' key={pricing.currency}>{pricing.currency}{pricing.amount}</div> : null
-                    ))} 
-                </div>
-            );
-        })
-    }
-}
-
   render() {
   return (
     <Router >
@@ -51,7 +30,7 @@ class App extends Component {
         <Kids data={this.props.data} />
       </Route>
       <Route exact path="/Cart">
-        <Cart />
+        <Cart data={this.props.data} />
       </Route>
       <Route exact path="/:id">
         <ProductDescription data={this.props.data} />
