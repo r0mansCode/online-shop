@@ -4,16 +4,14 @@ import { Link } from 'react-router-dom';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 
 export class Women extends Component {
-
-    constructor (props) {
+    constructor(props) {
         super(props);
-        this.state = {
-            name: '',
-            image: '',
-            description: '',
-            price: ''
+        this.handleClick = this.handleClick.bind(this);
         }
-      }
+    
+      handleClick(event) {
+      event.preventDefault();
+    }
 
     displayProducts(){
         var data = this.props.data;
@@ -32,6 +30,11 @@ export class Women extends Component {
                         {product.prices.map((pricing, index) => (
                             (index === 0) ? <div className='productPrice' key={pricing.currency}>{pricing.currency}{pricing.amount}</div> : null
                         ))} 
+                        <div onClick={ this.handleClick.bind(this) }>
+                            <button onClick={() =>this.props.handleClick(product.id)}>
+                            ADD TO CART
+                            </button>
+                            </div>
                     </div>
                     </Link>
                 );
@@ -40,7 +43,6 @@ export class Women extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <div className='categoryPage'>
                 <h2 className='categoryName'>Women</h2>                  

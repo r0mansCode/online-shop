@@ -5,6 +5,14 @@ import { HiOutlineShoppingCart } from 'react-icons/hi';
 
 
 export class Men extends Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+        }
+    
+      handleClick(event) {
+      event.preventDefault();
+    }
 
     displayProducts(){
         var data = this.props.data;
@@ -23,13 +31,18 @@ export class Men extends Component {
                         {product.prices.map((pricing, index) => (
                             (index === 0) ? <div className='productPrice' key={pricing.currency}>{pricing.currency}{pricing.amount}</div> : null
                         ))} 
+                        <div onClick={ this.handleClick.bind(this) }>
+                            <button onClick={() =>this.props.handleClick(product.id)}>
+                            ADD TO CART
+                            </button>
+                            </div>
                     </div>
                     </Link>
                 );
             })
         }
     }
-
+    
     render() {
         return (
             <div className='categoryPage'>

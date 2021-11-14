@@ -14,6 +14,18 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      productCart: []
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick (item){
+      this.setState({index: this.state.productCart.push(item)})
+  }
+
   render() {
   return (
     <Router >
@@ -21,19 +33,19 @@ class App extends Component {
       <Navbar />
       <Switch>
       <Route exact path="/">
-        <Women data={this.props.data} />
+        <Women data={this.props.data} productCart={this.state.productCart} handleClick={this.handleClick} />
       </Route>
       <Route exact path="/Men">
-        <Men data={this.props.data} />
+        <Men data={this.props.data} productCart={this.state.productCart} handleClick={this.handleClick}/>
       </Route>
       <Route exact path="/Kids">
-        <Kids data={this.props.data} />
+        <Kids data={this.props.data} productCart={this.state.productCart} handleClick={this.handleClick}/>
       </Route>
       <Route exact path="/Cart">
-        <Cart data={this.props.data} />
+        <Cart data={this.props.data} productCart={this.state.productCart} handleClick={this.handleClick} />
       </Route>
       <Route exact path="/:id">
-        <ProductDescription data={this.props.data} />
+        <ProductDescription data={this.props.data} productCart={this.state.productCart} handleClick={this.handleClick} />
       </Route>
       </Switch>
     </div>

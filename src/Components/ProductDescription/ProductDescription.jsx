@@ -4,20 +4,14 @@ import { withRouter } from "react-router";
 
 
 export class ProductDescription extends Component {
-
     constructor(props) {
         super(props);
-        this.state = {
-            image: [],
-            name: [],
-            amount: []
+        this.handleClick = this.handleClick.bind(this);
         }
-      
-      }
-
-      handleClick (e){
-          e.preventDefault();
-      }
+    
+      handleClick(event) {
+      event.preventDefault();
+    }
 
       displayProducts(){
         function converter(input) {
@@ -38,7 +32,7 @@ export class ProductDescription extends Component {
                         {product.prices.map((pricing, index) => (
                             (index === 0) ? <div className='productPrice' key={pricing.currency}>{pricing.currency}{pricing.amount}
                                 <div onClick={ this.handleClick.bind(this) }>
-                                <button onClick={ (e) => this.setState({image: this.state.image + product.gallery[0] , name: this.state.name + product.name , amount: this.state.amount + pricing.amount})}>
+                                <button onClick={() =>this.props.handleClick(product.id)}>
                                 ADD TO CART
                                 </button>
                                 </div>
@@ -57,9 +51,6 @@ export class ProductDescription extends Component {
             <div>
                 <h2>Product Description</h2>
                 {this.displayProducts()}
-                <img src={this.state.image} />
-                <div>{this.state.name}</div>
-                <div>{this.state.amount}</div>
             </div>
         )
     }
