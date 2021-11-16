@@ -27,14 +27,18 @@ export class Women extends Component {
                         <section className='productName'>
                         {product.name} 
                         </section>
+                        <div>
                         {product.prices.map((pricing, index) => (
-                            (index === 0) ? <div className='productPrice' key={pricing.currency}>{pricing.currency}{pricing.amount}</div> : null
-                        ))} 
-                        <div onClick={ this.handleClick.bind(this) }>
-                            <button onClick={() =>this.props.handleClick(product.id)}>
+                            (index === 0) ? <div className='productPrice' key={pricing.currency}>{pricing.currency}{pricing.amount}
+                            <div onClick={ this.handleClick.bind(this) }>
+                            <button onClick={() =>this.props.handleClick(product.id, pricing.amount)}>
                             ADD TO CART
                             </button>
                             </div>
+                            </div> : null
+                        ))} 
+                        </div>
+                        
                     </div>
                     </Link>
                 );

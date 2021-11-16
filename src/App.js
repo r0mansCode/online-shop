@@ -17,13 +17,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      productCart: []
+      productCart: [],
+      totalAmount: []
     }
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick (item){
-      this.setState({index: this.state.productCart.push(item)})
+  handleClick (id, amount){
+      this.setState({index: this.state.productCart.push(id), index: this.state.totalAmount.push({id ,amount})})
   }
 
   render() {
@@ -33,19 +34,19 @@ class App extends Component {
       <Navbar />
       <Switch>
       <Route exact path="/">
-        <Women data={this.props.data} productCart={this.state.productCart} handleClick={this.handleClick} />
+        <Women data={this.props.data} productCart={this.state.productCart} totalAmount={this.state.totalAmount} handleClick={this.handleClick} />
       </Route>
       <Route exact path="/Men">
-        <Men data={this.props.data} productCart={this.state.productCart} handleClick={this.handleClick}/>
+        <Men data={this.props.data} productCart={this.state.productCart} totalAmount={this.state.totalAmount} handleClick={this.handleClick}/>
       </Route>
       <Route exact path="/Kids">
-        <Kids data={this.props.data} productCart={this.state.productCart} handleClick={this.handleClick}/>
+        <Kids data={this.props.data} productCart={this.state.productCart} totalAmount={this.state.totalAmount} handleClick={this.handleClick}/>
       </Route>
       <Route exact path="/Cart">
-        <Cart data={this.props.data} productCart={this.state.productCart} handleClick={this.handleClick} />
+        <Cart data={this.props.data} productCart={this.state.productCart} totalAmount={this.state.totalAmount} handleClick={this.handleClick} />
       </Route>
       <Route exact path="/:id">
-        <ProductDescription data={this.props.data} productCart={this.state.productCart} handleClick={this.handleClick} />
+        <ProductDescription data={this.props.data} totalAmount={this.state.totalAmount} productCart={this.state.productCart} handleClick={this.handleClick} />
       </Route>
       </Switch>
     </div>
