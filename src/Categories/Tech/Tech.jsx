@@ -4,7 +4,7 @@ import '../CategorieStyling/CategoriesStyling.scss';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 
 
-export class Kids extends Component {
+export class Tech extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
@@ -19,8 +19,8 @@ export class Kids extends Component {
         if(data.loading){
             return(<div>Loading products...</div>)
         } else {
-            return data.category.products.map(product => {
-                return(
+            return data.category.products.map(product =>( 
+                (product.category === 'tech') ?
                     <Link className='productFrame' key={product.id} to={product.id}>
                     <div>
                         <div><HiOutlineShoppingCart className='productFrame__icon' /></div>
@@ -42,15 +42,15 @@ export class Kids extends Component {
                         
                     </div>
                     </Link>
-                );
-            })
+               : null )
+           )
         }
     }
 
     render() {
         return (
             <div className='categoryPage'>
-            <h2 className='categoryName'>Kids</h2>                  
+            <h2 className='categoryName'>Tech</h2>                  
                 <div className='productSection'>
                 {this.displayProducts()}
                 </div>
@@ -60,4 +60,4 @@ export class Kids extends Component {
 }
 
 
-export default Kids;
+export default Tech;

@@ -3,7 +3,7 @@ import '../CategorieStyling/CategoriesStyling.scss';
 import { Link } from 'react-router-dom';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 
-export class Women extends Component {
+export class All extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
@@ -49,7 +49,7 @@ export class Women extends Component {
     render() {
         return (
             <div className='categoryPage'>
-                <h2 className='categoryName'>Women</h2>                  
+                <h2 className='categoryName'>All</h2>                  
                     <div className='productSection'>
                     {this.displayProducts()}
                     </div>
@@ -58,4 +58,4 @@ export class Women extends Component {
     }
 }
 
-export default Women;
+export default All;
