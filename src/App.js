@@ -27,8 +27,8 @@ class App extends Component {
       this.setState({index: this.state.productCart.push({id, amount})})
   }
 
-   handleClickRemove (_,index){
-    const newTotalAmount = this.state.productCart.filter(i =>  i !==index);
+   handleClickRemove (index){
+    const newTotalAmount = this.state.productCart.filter((_, i) =>  i !== index);
     this.setState({ productCart: newTotalAmount});
    }
 
@@ -36,7 +36,7 @@ class App extends Component {
   return (
     <Router >
     <div>
-      <Navbar />
+      <Navbar productCart={this.state.productCart} />
       <Switch>
       <Route exact path="/">
         <All  data={this.props.data} 
@@ -72,3 +72,5 @@ class App extends Component {
 }
 
 export default graphql(getProductsQuery)(App);
+
+

@@ -23,7 +23,7 @@ export class Cart extends Component {
         var data = this.props.data;
         var cartArray = this.props.productCart;
         var filteredCart = [...new Set(cartArray.map(datA => datA.id))];
-            return filteredCart.map(cartItem => { 
+            return filteredCart.map((cartItem, ind) => { 
                 return (
                     data.category.products.map((product, index) => (
                         (product.id === cartItem) ?
@@ -47,8 +47,8 @@ export class Cart extends Component {
                                                         <div>{a(cartArray.filter(item => item.id === product.id))}</div>
 
                                                         <div>
-                                                            <div key={product.id} onClick={ this.handleClickRemove.bind(this) }>
-                                                                <button onClick={() => this.props.handleClickRemove(product.id)}>
+                                                            <div onClick={ this.handleClickRemove.bind(this) }>
+                                                                <button onClick={() => this.props.handleClickRemove(ind)}>
                                                                 -
                                                                 </button>
                                                                 {/* this.props.cartArray.map(it1 => { return ( )}) */}
