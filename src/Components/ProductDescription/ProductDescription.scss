@@ -1,0 +1,88 @@
+.pdpMain{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    &__productGalery{
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-left: 100px;
+
+
+        &__images{
+            height: 150px;
+            &:hover{
+                transform:scale(2);
+            }
+        }
+    }
+    
+    &__productImage{
+        position: relative;
+        margin: auto;
+        margin-top: 0;
+        height: 400px;
+    }
+
+    &__description{
+        padding-right: 120px;
+
+            &__productName{
+                font-weight: bold;
+                font-family: 'Raleway', sans-serif;
+                font-style: normal;  
+                color: #1D1F22;
+            }
+
+            &__button{
+                margin-top: 10px;
+                background-color: #5ECE7B;
+                color: white;
+                border: none;
+                width: 80%;
+                font-size: 26px;
+                &:hover{
+                    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                }
+                &:active {
+                    background-color: #3e8e41;
+                    box-shadow: 5px #666;
+                    // transform: translateY(4px);
+                }
+            }
+
+            &__productPrice1{
+                margin-top: 16px;
+                font-family: 'Roboto', 'Condensed';
+                font-style: normal;
+                font-weight: bold;
+                font-size: 14px; 
+                text-align: left;
+                color: #1D1F22;
+            }
+
+            &__productPrice2{
+                margin-top: 6px;
+                font-family: 'Raleway', sans-serif;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 18px; 
+                text-align: left;
+                color: #1D1F22;
+            }
+
+            &__productDescription{
+                margin-top: 14px;
+                font-family: Roboto;
+                font-weight: 400;
+                font-style: normal;
+                font-size: 16px;
+                line-height: 26px;
+            }
+        }
+    }
+
+.pdpPaddings{
+    margin-top: 70px;
+    margin-right: 100px;
+    margin-bottom: 40px;
+}

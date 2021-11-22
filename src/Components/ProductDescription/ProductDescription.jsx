@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router";
-// import Cart from '../Cart/Cart';
+import './ProductDescription.scss';
 
 
 export class ProductDescription extends Component {
@@ -21,24 +21,36 @@ export class ProductDescription extends Component {
         if(data.loading){
             return(<div>Loading products...</div>)
         } else {
-            return data.category.products.map(product => (
+            return data.category.products.map((product, index) => (
                 (product.id === this.props.match.params.id) ?
-                    <div key={product.id}>
-                        <img className='productImage' src={product.gallery[0]} alt="productPicture" />
-                        <section className='productName'>
-                        {product.name} 
-                        <div>{converter(product.description)}</div>
-                        </section>
-                        {product.prices.map((pricing, index) => (
-                            (index === 0) ? <div className='productPrice' key={pricing.currency}>{pricing.currency}{pricing.amount}
-                                <div onClick={ this.handleClick.bind(this) }>
-                                <button onClick={() =>this.props.handleClick(product.id, pricing.amount)}>
-                                ADD TO CART
-                                </button>
+                    <div className='pdpMain'>
+                        <ol className='pdpMain__productGalery'>
+                            {product.gallery.map((images, i) => { return(
+                            <img key={i} className='pdpMain__productGalery__images' 
+                            src={images} alt="productPicture" />)})
+                            }
+                        </ol>
+                        <img key={product.gallery} className='pdpMain__productImage' src={product.gallery[0]} alt="productPicture" />
+                            <div className='pdpMain__description'>
+                            <section className='pdpMain__description__productName'>
+                            {product.name} 
+                            </section>
+                            {product.prices.map((pricing, index) => (
+                                (index === 0) ?<div>
+                                    <div className='pdpMain__description__productPrice1'>PRICE:</div> 
+                                    <div className='pdpMain__description__productPrice2' key={pricing.currency}>
+                                        {pricing.currency}{pricing.amount}
+                                    </div>
+                                    <div onClick={ this.handleClick.bind(this) }>
+                                    <button key={index} className='pdpMain__description__button' onClick={() =>this.props.handleClick(product.id, pricing.amount)}>
+                                    ADD TO CART
+                                    </button>
+                                    </div>
+                                    <div key={index} className='pdpMain__description__productDescription'>{converter(product.description)}</div>
                                 </div>
+                            : null
+                            ))}
                             </div>
-                        : null
-                        ))} 
                     </div>
                     : null
                 )
@@ -48,8 +60,7 @@ export class ProductDescription extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Product Description</h2>
+            <div className='pdpPaddings'>
                 {this.displayProducts()}
             </div>
         )
