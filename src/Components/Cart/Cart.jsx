@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Cart.scss';
 
 function a (leng) {return leng.length};
 
@@ -27,37 +28,46 @@ export class Cart extends Component {
                 return (
                     data.category.products.map((product, index) => (
                         (product.id === cartItem) ?
-                                <div key={index}>
-                                        <img className='productImage' src={product.gallery[0]} alt="productPicture" />
-                                        <div className='productName'>
-                                        {product.name}
+                                <div className='cart' key={index}> 
+
+                                    <div className='cart__firstSection'>
+                                        <div className='cart__firstSection__productName'>
+                                            {product.name}
                                         </div>
                                         {product.prices.map((pricing, indexx) => (
                                             (indexx === 0) ? 
-                                                <div className='productPrice' key={indexx}>
-                                                    {pricing.currency} {pricing.amount}
-                                                    <div>{(a(cartArray.filter(item => item.id === product.id)))*(pricing.amount)}</div>
-
-                                                    <div onClick={ this.handleClick.bind(this) }>
-                                                        <button onClick={() =>this.props.handleClick(product.id, pricing.amount)}>
-                                                        +
-                                                        </button>
+                                                <div className='cart__firstSection__productPrice' key={indexx}>
+                                                    <div>
+                                                        {pricing.currency} {(a(cartArray.filter(item => item.id === product.id)))*(pricing.amount)}
                                                     </div>
-
-                                                        <div>{a(cartArray.filter(item => item.id === product.id))}</div>
-
-                                                        <div>
-                                                            <div onClick={ this.handleClickRemove.bind(this) }>
-                                                                <button onClick={() => this.props.handleClickRemove(ind)}>
-                                                                -
-                                                                </button>
-                                                                {/* this.props.cartArray.map(it1 => { return ( )}) */}
-                                                            </div>
-                                                        </div>
                                                 </div>
                                             : null
                                         ))}
-                                 
+                                    </div>
+
+                                {product.prices.map((pricing, indexx) => (indexx === 0) ? 
+                                        <div className='cart__secondSection'>
+                                            <div className='cart__secondSection__buttons'>
+                                                <div onClick={ this.handleClick.bind(this) }>
+                                                    <button className='cart__secondSection__buttons__button' onClick={() =>this.props.handleClick(product.id, pricing.amount)}>
+                                                    +
+                                                    </button>
+                                                </div>
+                                                <div>
+                                                    {a(cartArray.filter(item => item.id === product.id))}
+                                                </div>
+                                                <div onClick={ this.handleClickRemove.bind(this) }>
+                                                    <button className='cart__secondSection__buttons__button' onClick={() => this.props.handleClickRemove(ind)}>
+                                                    -
+                                                    </button>
+                                                </div>
+                                            </div>
+                                                <div>
+                                                    <img className='cart__secondSection__image' src={product.gallery[0]} alt="productPicture" />
+                                                </div>
+                                        </div> 
+                                    : null )}
+
                                 </div>
                             : null
                     ))
@@ -69,9 +79,8 @@ export class Cart extends Component {
         console.log(this.props)
         return (
         <div>
-            <div>Cart</div>
-            {a(this.props.productCart)}
-            {this.displayProducts()}
+            <div className='title'>Cart</div>
+            <div  className='cartPage'>{this.displayProducts()}</div>
         </div>
         )
     }
