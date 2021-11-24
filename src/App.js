@@ -36,7 +36,10 @@ class App extends Component {
   return (
     <Router >
     <div>
-      <Navbar productCart={this.state.productCart} />
+      <Navbar data={this.props.data} 
+              productCart={this.state.productCart} 
+              handleClick={this.handleClick}
+              handleClickRemove={this.handleClickRemove} />
       <Switch>
       <Route exact path="/">
         <All  data={this.props.data} 

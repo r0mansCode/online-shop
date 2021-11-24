@@ -32,7 +32,7 @@ export class Tech extends Component {
                         {product.prices.map((pricing, index) => (
                             (index === 0) ? <div className='productPrice' key={pricing.currency}>{pricing.currency}{pricing.amount}
                             <div onClick={ this.handleClick.bind(this) }>
-                            <button onClick={() =>this.props.handleClick(product.id, pricing.amount)}>
+                            <button className='productFrame__button' onClick={() =>this.props.handleClick(product.id, pricing.amount)}>
                             ADD TO CART
                             </button>
                             </div>

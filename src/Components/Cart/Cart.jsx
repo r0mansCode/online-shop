@@ -62,7 +62,7 @@ export class Cart extends Component {
                                                     </button>
                                                 </div>
                                             </div>
-                                                <div>
+                                                <div className='cart__secondSection__container' >
                                                     <img className='cart__secondSection__image' src={product.gallery[0]} alt="productPicture" />
                                                 </div>
                                         </div> 
@@ -80,7 +80,7 @@ export class Cart extends Component {
         return (
         <div>
             <div className='title'>Cart</div>
-            <div  className='cartPage'>{this.displayProducts()}</div>
+            <div className='cartPage'>{this.displayProducts()}</div>
         </div>
         )
     }

@@ -66,14 +66,30 @@ color: #1D1F22;
     display: none;
 }
 
+.productFrame__button {
+    background-color: #789e82;
+    color: white;
+    border: none;
+    font-size: 16px;
+    display: none;
+}
+
 .productFrame {
     text-decoration: none;
     padding: 20px; 
     &:hover {
+        transition: .5s ease;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         cursor: pointer;
     }   
     &:hover &__icon{
         display: block;         
+    }
+    &:hover &__button{
+        display: block;         
+        &:active {
+            background-color: #3e8e41;
+            box-shadow: 5px #666;
+        }
     }
 }
