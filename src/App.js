@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { graphql } from '@apollo/client/react/hoc';
 import { getProductsQuery } from './Components/Queries/Queries';
-import './App.scss';
 import './Components/Navbar/Navbar';
 import Navbar from './Components/Navbar/Navbar';
 import Tech from './Categories/Tech/Tech';

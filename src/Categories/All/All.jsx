@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../CategorieStyling/CategoriesStyling.scss';
+import '../../Components/Navbar/Navbar.scss';
 import { Link } from 'react-router-dom';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 

@@ -94,7 +94,7 @@ export class Navbar extends Component {
                                 <div className='total'>Total <div className='amount'>{sum(this.props.productCart)}</div></div>
                                 <div className='overlayButtons'>
                                     <button className='overlayButtons__view'>View Bag</button>
-                                    <button className='overlayButtons__check'>Check out</button>
+                                    <button className='overlayButtons__checkOut'>Check out</button>
                                 </div>
                             </div>
                         </Link>
