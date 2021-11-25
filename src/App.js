@@ -26,7 +26,7 @@ class App extends Component {
       this.setState({index: this.state.productCart.push({id, amount})})
   }
 
-  //handleClick not working correct, will fix it in the future
+  //handleClickRemove not working correct, will fix it in the future
    handleClickRemove (index){
     const newTotalAmount = this.state.productCart.filter((_, i) =>  i !== index);
     this.setState({ productCart: newTotalAmount});
