@@ -3,12 +3,10 @@ import { graphql } from '@apollo/client/react/hoc';
 import { getProductsQuery } from './Components/Queries/Queries';
 import './Components/Navbar/Navbar';
 import Navbar from './Components/Navbar/Navbar';
-import Tech from './Categories/Tech/Tech';
-import Clothes from './Categories/Clothes/Clothes';
 import All from './Categories/All/All';
 import Cart from './Components/Cart/Cart';
 import ProductDescription from './Components/ProductDescription/ProductDescription';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 
 class App extends Component {
@@ -41,18 +39,8 @@ class App extends Component {
               handleClick={this.handleClick}
               handleClickRemove={this.handleClickRemove} />
       <Switch>
-      <Route exact path="/">
+      <Route exact path={["/", "/tech", "/clothes"]}>
         <All  data={this.props.data} 
-                productCart={this.state.productCart} 
-                handleClick={this.handleClick}/>
-      </Route>
-      <Route exact path="/Clothes">
-        <Clothes    data={this.props.data} 
-                productCart={this.state.productCart} 
-                handleClick={this.handleClick}/>
-      </Route>
-      <Route exact path="/Tech">
-        <Tech   data={this.props.data} 
                 productCart={this.state.productCart} 
                 handleClick={this.handleClick}/>
       </Route>

@@ -82,8 +82,8 @@ export class Navbar extends Component {
             <nav>
                 <section className="navBar">
                         <Link className="navBar__Category" to="/">All</Link>
-                        <Link className="navBar__Category" to="/Clothes">Clothes</Link> 
-                        <Link className="navBar__Category" to="/Tech">Tech</Link> 
+                        <Link className="navBar__Category" to="/clothes">Clothes</Link> 
+                        <Link className="navBar__Category" to="/tech">Tech</Link> 
                         <Link className="navBar__icon" to="/"><AiOutlineShopping  /></Link>
                         <Link className="navBar__icon2" to="Cart">
                             <HiOutlineShoppingCart />

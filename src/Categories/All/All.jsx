@@ -3,6 +3,9 @@ import '../CategorieStyling/CategoriesStyling.scss';
 import '../../Components/Navbar/Navbar.scss';
 import { Link } from 'react-router-dom';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
+import { withRouter } from 'react-router-dom';
+
+function deleteFirst (urL) {return urL.substring(1)};
 
 export class All extends Component {
     constructor(props) {
@@ -14,19 +17,31 @@ export class All extends Component {
       event.preventDefault();
     }
 
+    displayCategory() {
+        function all () {return "All"}
+        var urL = this.props.location.pathname;
+        var deleteFirst = urL.substring(1);
+        var uP = deleteFirst.charAt(0).toUpperCase() + deleteFirst.slice(1);
+        if(this.props.location.pathname === "/"){
+            return (<div>All</div>)
+        } else {
+            return <div>{uP}</div>
+        }
+    }
+
     displayProducts(){
         var data = this.props.data;
         if(data.loading){
             return(<div>Loading products...</div>)
         } else {
-            return data.category.products.map(product => {
-                return(
+            return data.category.products.map(product =>(
+                (product.category === deleteFirst(this.props.location.pathname)) || (this.props.location.pathname === "/") ?
                     <Link className='productFrame' key={product.id} to={product.id}>
                     <div>
                         <div><HiOutlineShoppingCart className='productFrame__icon' /></div>
                         <img className='productImage' src={product.gallery[0]} alt="productPicture" />
                         <section className='productName'>
-                        {product.name} 
+                            {product.name} {product.brand}
                         </section>
                         <div>
                         {product.prices.map((pricing, index) => (
@@ -42,15 +57,18 @@ export class All extends Component {
                         
                     </div>
                     </Link>
-                );
-            })
+                        : null
+                )
+            )
         }
     }
 
     render() {
         return (
             <div className='categoryPage'>
-                <h2 className='categoryName'>All</h2>                  
+                <h2 className='categoryName'>
+                    {this.displayCategory()}
+                    </h2>                  
                     <div className='productSection'>
                     {this.displayProducts()}
                     </div>
@@ -59,4 +77,4 @@ export class All extends Component {
     }
 }
 
-export default All;
+export default withRouter(All);

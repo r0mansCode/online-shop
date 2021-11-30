@@ -7,6 +7,7 @@ query {
       products {
         id
         name
+        brand
         gallery
         description
         category
