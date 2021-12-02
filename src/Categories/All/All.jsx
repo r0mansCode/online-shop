@@ -38,7 +38,10 @@ export class All extends Component {
                 (product.category === deleteFirst(this.props.location.pathname)) || (this.props.location.pathname === "/") ?
                     <Link className='productFrame' key={product.id} to={product.id}>
                     <div>
-                        <div><HiOutlineShoppingCart className='productFrame__icon' /></div>
+                        <div onClick={ this.handleClick.bind(this) }>
+                            <HiOutlineShoppingCart className='productFrame__icon' 
+                                onClick={() =>product.prices.map((pricing, index) =>( (index === 0) ? this.props.handleClick(product.id, pricing.amount) : null))} />
+                        </div>
                         <img className='productImage' src={product.gallery[0]} alt="productPicture" />
                         <section className='productName'>
                             {product.name} {product.brand}
@@ -46,11 +49,7 @@ export class All extends Component {
                         <div>
                         {product.prices.map((pricing, index) => (
                             (index === 0) ? <div className='productPrice' key={pricing.currency}>{pricing.currency}{pricing.amount}
-                            <div onClick={ this.handleClick.bind(this) }>
-                            <button className='productFrame__button' onClick={() =>this.props.handleClick(product.id, pricing.amount)}>
-                            ADD TO CART
-                            </button>
-                            </div>
+                            
                             </div> : null
                         ))} 
                         </div>
