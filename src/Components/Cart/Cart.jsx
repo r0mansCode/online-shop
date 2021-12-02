@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Cart.scss';
 
 function a (leng) {return leng.length};
-
+function round(pricE) {return pricE.toFixed(2)};
 
 export class Cart extends Component {
     constructor(props) {
@@ -38,7 +38,7 @@ export class Cart extends Component {
                                             (indexx === 0) ? 
                                                 <div className='cart__firstSection__productPrice' key={indexx}>
                                                     <div>
-                                                        {pricing.currency} {(a(cartArray.filter(item => item.id === product.id)))*(pricing.amount)}
+                                                        {pricing.currency} {round((a(cartArray.filter(item => item.id === product.id)))*(pricing.amount))}
                                                     </div>
                                                 </div>
                                             : null

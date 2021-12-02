@@ -5,7 +5,8 @@ import { AiOutlineShopping } from 'react-icons/ai';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 
 function a (leng) {return leng.length};
-function sum (amounT) {return amounT.reduce((a,v) => a = a + v.amount, 0)}
+function sum (amounT) {return amounT.reduce((a,v) => a = a + v.amount, 0)};
+function round(pricE) {return pricE.toFixed(2)};
 
 export class Navbar extends Component {
     constructor(props) {
@@ -40,7 +41,7 @@ export class Navbar extends Component {
                                             (indexx === 0) ? 
                                                 <div className='cartNav__firstSection__productPrice' key={indexx}>
                                                     <div>
-                                                        {pricing.currency} {(a(cartArray.filter(item => item.id === product.id)))*(pricing.amount)}
+                                                        {pricing.currency} {pricing.amount}
                                                     </div>
                                                 </div>
                                             : null
@@ -91,7 +92,7 @@ export class Navbar extends Component {
                             <div className="navBar__icon2__cartOverlay">
                                 <div className='myBag'>My Bag, <div className='myBagInLine'>{a(this.props.productCart)} items</div></div>
                                 {this.displayProducts()}
-                                <div className='total'>Total <div className='amount'>{sum(this.props.productCart)}</div></div>
+                                <div className='total'>Total <div className='amount'>{round(sum(this.props.productCart))}</div></div>
                                 <div className='overlayButtons'>
                                     <button className='overlayButtons__view'>View Bag</button>
                                     <button className='overlayButtons__checkOut'>Check out</button>
