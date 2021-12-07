@@ -3,16 +3,32 @@ import { Link } from 'react-router-dom';
 import './Navbar.scss';
 import { AiOutlineShopping } from 'react-icons/ai';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
+import { BiDollar } from 'react-icons/bi';
+import { BiPound } from 'react-icons/bi';
+import { BiYen } from 'react-icons/bi';
+import { BiRuble } from 'react-icons/bi';
+import Select from 'react-select'
 
 function a (leng) {return leng.length};
 function sum (amounT) {return amounT.reduce((a,v) => a = a + v.amount, 0)};
 function round(pricE) {return pricE.toFixed(2)};
+
+
+const options = [
+    {value: 'USD', label: <BiDollar/>},
+    {value: 'GBP', label: <BiPound/>},
+    {value: 'JPY', label: <BiYen/>},
+    {value: 'RUB', label: <BiRuble/>},
+    {value: 'AUD', label: <div>A<BiDollar/></div> }
+];
+
 
 export class Navbar extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.handleClickRemove = this.handleClickRemove.bind(this);
+        this.handleCurrency = this.handleCurrency.bind(this);
         };
     
       handleClick(event) {
@@ -20,6 +36,10 @@ export class Navbar extends Component {
     };
 
       handleClickRemove(event) {
+        event.preventDefault();
+    };
+
+    handleCurrency(event) {
         event.preventDefault();
     };
 
@@ -77,8 +97,22 @@ export class Navbar extends Component {
             )
     }
 
+    displayCurrencySwitcher(){
+        // var value = options.map((value, index) => {return (<div>{value.value}</div>)})
+        return (
+            <div onChange={ this.handleCurrency.bind(this) }>
+                <Select options={options} 
+                        defaultValue={{ label: <BiDollar/>, value: 'USD' }} 
+                        onChange={this.props.handleCurrency} />
+            </div>
+        )
+    }
+
+
+
 
     render() {
+        console.log(this.props)
         return (
             <nav>
                 <section className="navBar">
@@ -86,6 +120,7 @@ export class Navbar extends Component {
                         <Link className="navBar__Category" to="/clothes">Clothes</Link> 
                         <Link className="navBar__Category" to="/tech">Tech</Link> 
                         <Link className="navBar__icon" to="/"><AiOutlineShopping  /></Link>
+                        {this.displayCurrencySwitcher()}
                         <Link className="navBar__icon2" to="Cart">
                             <HiOutlineShoppingCart />
                             <div className="navBar__icon2__length">{a(this.props.productCart)}</div>

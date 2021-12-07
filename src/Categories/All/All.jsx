@@ -18,7 +18,7 @@ export class All extends Component {
     }
 
     displayCategory() {
-        function all () {return "All"}
+        
         var urL = this.props.location.pathname;
         var deleteFirst = urL.substring(1);
         var uP = deleteFirst.charAt(0).toUpperCase() + deleteFirst.slice(1);
@@ -48,7 +48,7 @@ export class All extends Component {
                         </section>
                         <div>
                         {product.prices.map((pricing, index) => (
-                            (index === 0) ? <div className='productPrice' key={pricing.currency}>{pricing.currency}{pricing.amount}
+                            (pricing.currency === this.props.currency.value) ? <div className='productPrice' key={pricing.currency}>{pricing.currency}{pricing.amount}
                             
                             </div> : null
                         ))} 
@@ -63,6 +63,7 @@ export class All extends Component {
     }
 
     render() {
+       
         return (
             <div className='categoryPage'>
                 <h2 className='categoryName'>
