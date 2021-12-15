@@ -36,10 +36,10 @@ export class ProductDescription extends Component {
                             {product.name} 
                             </section>
                             {product.prices.map((pricing, index) => (
-                                (index === 0) ?<div>
+                                (pricing.currency === this.props.currency.value) ?<div>
                                     <div className='pdpMain__description__productPrice1'>PRICE:</div> 
                                     <div className='pdpMain__description__productPrice2' key={pricing.currency}>
-                                        {pricing.currency}{pricing.amount}
+                                        {this.props.currency.label}{pricing.amount}
                                     </div>
                                     <div onClick={ this.handleClick.bind(this) }>
                                     <button key={index} className='pdpMain__description__button' onClick={() =>this.props.handleClick(product.id, pricing.amount)}>

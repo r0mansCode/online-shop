@@ -35,17 +35,17 @@ export class Cart extends Component {
                                             {product.name}
                                         </div>
                                         {product.prices.map((pricing, indexx) => (
-                                            (indexx === 0) ? 
+                                            (pricing.currency === this.props.currency.value) ? 
                                                 <div className='cart__firstSection__productPrice' key={indexx}>
                                                     <div>
-                                                        {pricing.currency} {round((a(cartArray.filter(item => item.id === product.id)))*(pricing.amount))}
+                                                        {this.props.currency.label} {round((a(cartArray.filter(item => item.id === product.id)))*(pricing.amount))}
                                                     </div>
                                                 </div>
                                             : null
                                         ))}
                                     </div>
 
-                                {product.prices.map((pricing, indexx) => (indexx === 0) ? 
+                                {product.prices.map((pricing, indexx) => (pricing.currency === this.props.currency.value) ? 
                                         <div className='cart__secondSection'>
                                             <div className='cart__secondSection__buttons'>
                                                 <div onClick={ this.handleClick.bind(this) }>

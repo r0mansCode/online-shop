@@ -15,6 +15,15 @@
         }
     }
 
+    &__switcher {
+        text-align: center;
+        font-size: 15px;
+        position: absolute;
+        border: none;
+        width: 75px;
+        height: 15px;
+    }
+
     &__icon {
         position: absolute;
         margin-left: 30%;

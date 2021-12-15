@@ -58,10 +58,10 @@ export class Navbar extends Component {
                                             {product.name}
                                         </div>
                                         {product.prices.map((pricing, indexx) => (
-                                            (indexx === 0) ? 
+                                            (pricing.currency === this.props.currency.value) ? 
                                                 <div className='cartNav__firstSection__productPrice' key={indexx}>
                                                     <div>
-                                                        {pricing.currency} {pricing.amount}
+                                                        {this.props.currency.label} {pricing.amount}
                                                     </div>
                                                 </div>
                                             : null
@@ -101,7 +101,7 @@ export class Navbar extends Component {
         // var value = options.map((value, index) => {return (<div>{value.value}</div>)})
         return (
             <div onChange={ this.handleCurrency.bind(this) }>
-                <Select options={options} 
+                <Select className='navBar__switcher' options={options} 
                         defaultValue={{ label: <BiDollar/>, value: 'USD' }} 
                         onChange={this.props.handleCurrency} />
             </div>
@@ -119,8 +119,9 @@ export class Navbar extends Component {
                         <Link className="navBar__Category" to="/">All</Link>
                         <Link className="navBar__Category" to="/clothes">Clothes</Link> 
                         <Link className="navBar__Category" to="/tech">Tech</Link> 
+                        
                         <Link className="navBar__icon" to="/"><AiOutlineShopping  /></Link>
-                        {this.displayCurrencySwitcher()}
+                        
                         <Link className="navBar__icon2" to="Cart">
                             <HiOutlineShoppingCart />
                             <div className="navBar__icon2__length">{a(this.props.productCart)}</div>
@@ -132,8 +133,11 @@ export class Navbar extends Component {
                                     <button className='overlayButtons__view'>View Bag</button>
                                     <button className='overlayButtons__checkOut'>Check out</button>
                                 </div>
+                                
                             </div>
+                           
                         </Link>
+                        {this.displayCurrencySwitcher()}
                 </section>
             </nav>
         )

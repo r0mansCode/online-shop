@@ -7,6 +7,7 @@ import All from './Categories/All/All';
 import Cart from './Components/Cart/Cart';
 import ProductDescription from './Components/ProductDescription/ProductDescription';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BiDollar } from 'react-icons/bi';
 
 
 class App extends Component {
@@ -15,7 +16,7 @@ class App extends Component {
     super(props);
     this.state = {
       productCart: [],
-      currency: {value : "USD"}
+      currency: {value: 'USD', label: <BiDollar/>}
     }
     this.handleCurrency = this.handleCurrency.bind(this);
     this.handleClick = this.handleClick.bind(this);

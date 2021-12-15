@@ -48,7 +48,7 @@ export class All extends Component {
                         </section>
                         <div>
                         {product.prices.map((pricing, index) => (
-                            (pricing.currency === this.props.currency.value) ? <div className='productPrice' key={pricing.currency}>{pricing.currency}{pricing.amount}
+                            (pricing.currency === this.props.currency.value) ? <div className='productPrice' key={pricing.currency}>{this.props.currency.label}{pricing.amount}
                             
                             </div> : null
                         ))} 
