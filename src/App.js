@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.scss';
 import { graphql } from '@apollo/client/react/hoc';
 import { getProductsQuery } from './Components/Queries/Queries';
 import './Components/Navbar/Navbar';
@@ -40,7 +41,7 @@ class App extends Component {
   render() {
   return (
     <Router >
-    <div>
+    <div className='App'>
       <Navbar data={this.props.data} 
               productCart={this.state.productCart}
               currency={this.state.currency} 

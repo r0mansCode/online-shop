@@ -98,10 +98,9 @@ export class Navbar extends Component {
     }
 
     displayCurrencySwitcher(){
-        // var value = options.map((value, index) => {return (<div>{value.value}</div>)})
         return (
-            <div onChange={ this.handleCurrency.bind(this) }>
-                <Select className='navBar__switcher' options={options} 
+            <div className='navBar__switcher'  onChange={ this.handleCurrency.bind(this) }>
+                <Select  options={options} 
                         defaultValue={{ label: <BiDollar/>, value: 'USD' }} 
                         onChange={this.props.handleCurrency} />
             </div>
@@ -114,14 +113,12 @@ export class Navbar extends Component {
     render() {
         console.log(this.props)
         return (
-            <nav>
-                <section className="navBar">
+            <nav className="navBar">
                         <Link className="navBar__Category" to="/">All</Link>
                         <Link className="navBar__Category" to="/clothes">Clothes</Link> 
                         <Link className="navBar__Category" to="/tech">Tech</Link> 
-                        
                         <Link className="navBar__icon" to="/"><AiOutlineShopping  /></Link>
-                        
+                        {this.displayCurrencySwitcher()}
                         <Link className="navBar__icon2" to="Cart">
                             <HiOutlineShoppingCart />
                             <div className="navBar__icon2__length">{a(this.props.productCart)}</div>
@@ -133,12 +130,8 @@ export class Navbar extends Component {
                                     <button className='overlayButtons__view'>View Bag</button>
                                     <button className='overlayButtons__checkOut'>Check out</button>
                                 </div>
-                                
                             </div>
-                           
                         </Link>
-                        {this.displayCurrencySwitcher()}
-                </section>
             </nav>
         )
     }
