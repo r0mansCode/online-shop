@@ -17,7 +17,7 @@ class App extends Component {
     super(props);
     this.state = {
       productCart: [],
-      currency: {value: 'USD', label: <BiDollar/>}
+      currency: {value: 'USD', label: <BiDollar/>, rate: 1}
     }
     this.handleCurrency = this.handleCurrency.bind(this);
     this.handleClick = this.handleClick.bind(this);

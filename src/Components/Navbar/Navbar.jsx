@@ -15,11 +15,11 @@ function round(pricE) {return pricE.toFixed(2)};
 
 
 const options = [
-    {value: 'USD', label: <BiDollar/>},
-    {value: 'GBP', label: <BiPound/>},
-    {value: 'JPY', label: <BiYen/>},
-    {value: 'RUB', label: <BiRuble/>},
-    {value: 'AUD', label: <div>A<BiDollar/></div> }
+    {value: 'USD', label: <BiDollar/>, rate: 1},
+    {value: 'GBP', label: <BiPound/>, rate: 0.718786},
+    {value: 'JPY', label: <BiYen/>, rate: 107.99181},
+    {value: 'RUB', label: <BiRuble/>, rate: 75.6225089},
+    {value: 'AUD', label: <div>A<BiDollar/></div>, rate: 1.29 }
 ];
 
 
@@ -107,13 +107,16 @@ export class Navbar extends Component {
         )
     }
 
-
+    totalAmount(){
+        return round(sum(this.props.productCart)*this.props.currency.rate)
+    }
 
 
     render() {
         console.log(this.props)
         return (
             <nav className="navBar">
+               
                         <Link className="navBar__Category" to="/">All</Link>
                         <Link className="navBar__Category" to="/clothes">Clothes</Link> 
                         <Link className="navBar__Category" to="/tech">Tech</Link> 
@@ -125,7 +128,7 @@ export class Navbar extends Component {
                             <div className="navBar__icon2__cartOverlay">
                                 <div className='myBag'>My Bag, <div className='myBagInLine'>{a(this.props.productCart)} items</div></div>
                                 {this.displayProducts()}
-                                <div className='total'>Total <div className='amount'>{round(sum(this.props.productCart))}</div></div>
+                                <div className='total'>Total <div className='amount'> {this.totalAmount()}</div></div>
                                 <div className='overlayButtons'>
                                     <button className='overlayButtons__view'>View Bag</button>
                                     <button className='overlayButtons__checkOut'>Check out</button>

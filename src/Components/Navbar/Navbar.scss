@@ -72,6 +72,10 @@
             display: block; 
             // content: attr(title);
             position: absolute;
+            
+        }
+        &:hover &.App{
+            display: none;         
         }
     }
 }
@@ -80,6 +84,7 @@
 .navBar__icon2__cartOverlay {
     background-color: rgb(255, 255, 255);
     display: none;
+    z-index: 99;
 }
 
 .cartNav{
