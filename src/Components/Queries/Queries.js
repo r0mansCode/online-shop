@@ -7,6 +7,7 @@ query {
       products {
         id
         name
+        inStock
         brand
         gallery
         description

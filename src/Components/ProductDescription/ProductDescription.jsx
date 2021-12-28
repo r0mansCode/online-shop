@@ -41,11 +41,12 @@ export class ProductDescription extends Component {
                                     <div className='pdpMain__description__productPrice2' key={pricing.currency}>
                                         {this.props.currency.label}{pricing.amount}
                                     </div>
+                                    {(product.inStock === true) ?
                                     <div onClick={ this.handleClick.bind(this) }>
                                     <button key={index} className='pdpMain__description__button' onClick={() =>this.props.handleClick(product.id, pricing.amount)}>
                                     ADD TO CART
                                     </button>
-                                    </div>
+                                    </div> : null}
                                     <div key={index} className='pdpMain__description__productDescription'>{converter(product.description)}</div>
                                 </div>
                             : null

@@ -38,11 +38,15 @@ export class All extends Component {
                 (product.category === deleteFirst(this.props.location.pathname)) || (this.props.location.pathname === "/") ?
                     <Link className='productFrame' key={product.id} to={product.id}>
                     <div>
+                        {(product.inStock === true) ?
                         <div onClick={ this.handleClick.bind(this) }>
                             <HiOutlineShoppingCart className='productFrame__icon' 
                                 onClick={() =>product.prices.map((pricing, index) =>( (index === 0) ? this.props.handleClick(product.id, pricing.amount) : null))} />
-                        </div>
-                        <img className='productImage' src={product.gallery[0]} alt="productPicture" />
+                        </div> : null}
+                        {(product.inStock === true) ?
+                        <img className='productImage' src={product.gallery[0]} alt="productPicture" /> :
+                        <div><img className='productImage__outOfStock' src={product.gallery[0]} alt="productPicture" />
+                        <div className='productImage__text'>OUT OF STOCK</div></div>}
                         <section className='productName'>
                             {product.name} {product.brand}
                         </section>
