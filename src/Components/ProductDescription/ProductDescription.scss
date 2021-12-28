@@ -34,6 +34,33 @@
                 color: #1D1F22;
             }
 
+            &__attributes {
+                display: block;
+            }
+
+            &__attribute {
+                font-family: Roboto Condensed;
+                font-size: 700;
+                font-size: 18px;
+                margin-top: 8px;
+                margin-bottom: 8px;
+            }
+
+            &__value {
+                display: inline-block;
+                margin-bottom: 5px;
+                margin-right: 10px;
+                width: 63px;
+                height: 45px;
+                background-color: white;
+                &:hover{
+                    background-color: rgba(29, 31, 34, 1);
+                }
+                &:focus{
+                    background-color: rgba(29, 31, 34, 1);
+                }
+            }
+
             &__button{
                 margin-top: 10px;
                 background-color: #5ECE7B;

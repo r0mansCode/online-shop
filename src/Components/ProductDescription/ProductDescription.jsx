@@ -35,6 +35,34 @@ export class ProductDescription extends Component {
                             <section className='pdpMain__description__productName'>
                             {product.name} 
                             </section>
+                            <div>
+                                {product.attributes.map(
+                                    attribute => (
+                                        (attribute.name === "Color") ?
+                                                <div className='pdpMain__description__attributes'>
+                                                    <div  className='pdpMain__description__attribute'>
+                                                        {attribute.name}:
+                                                    </div>
+                                                    {attribute.items.map(item =>{
+                                                        return (<button className='pdpMain__description__value' style={{backgroundColor: item.value, color: "#44014C"}}>
+                                                                    {item.displayValue}
+                                                                </button>)
+                                                    })}
+                                                </div>
+                                                : 
+                                                <div className='pdpMain__description__attributes'>
+                                                    <div  className='pdpMain__description__attribute'>
+                                                        {attribute.name}:
+                                                    </div>
+                                                    {attribute.items.map(item =>{
+                                                        return (<button className='pdpMain__description__value'>
+                                                                    {item.value}
+                                                                </button>)
+                                                    })}
+                                                </div>
+                                                )
+                                )}
+                            </div>
                             {product.prices.map((pricing, index) => (
                                 (pricing.currency === this.props.currency.value) ?<div>
                                     <div className='pdpMain__description__productPrice1'>PRICE:</div> 
@@ -69,3 +97,17 @@ export class ProductDescription extends Component {
 }
 
 export default withRouter(ProductDescription);
+
+
+{/* <div>
+                                {product.attributes.map(attribute =>{return (
+                                    <div className='pdpMain__description__attributes'>
+                                        <div  className='pdpMain__description__attribute'>
+                                            {attribute.name}:
+                                        </div>
+                                        {attribute.items.map(item =>{
+                                            return (<button className='pdpMain__description__value'>
+                                                        {item.value}
+                                                    </button>)
+                                })}</div>)})}
+                            </div> */}
