@@ -116,7 +116,6 @@ export class Navbar extends Component {
         console.log(this.props)
         return (
             <nav className="navBar">
-               
                         <Link className="navBar__Category" to="/">All</Link>
                         <Link className="navBar__Category" to="/clothes">Clothes</Link> 
                         <Link className="navBar__Category" to="/tech">Tech</Link> 
@@ -132,8 +131,9 @@ export class Navbar extends Component {
                                 <div className='overlayButtons'>
                                     <button className='overlayButtons__view'>View Bag</button>
                                     <button className='overlayButtons__checkOut'>Check out</button>
-                                </div>
+                                </div>                              
                             </div>
+                            <div className='navBar__icon2__backdrop'></div>
                         </Link>
             </nav>
         )
