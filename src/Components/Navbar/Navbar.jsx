@@ -66,6 +66,27 @@ export class Navbar extends Component {
                                                 </div>
                                             : null
                                         ))}
+                                         <div>
+                                            {product.attributes.map(
+                                                attribute => (
+                                                    (attribute.name === "Color") ?
+                                                            <div className='navBar__firstSection__productAttributes'>
+                                                                {attribute.items.map(item =>{
+                                                                    return (<button className='navBar__firstSection__value' style={{backgroundColor: item.value, color: "#44014C"}}>
+                                                                            </button>)
+                                                                })}
+                                                            </div>
+                                                            : 
+                                                            <div className='navBar__firstSection__productAttributes'>
+                                                                {attribute.items.map(item =>{
+                                                                    return (<button className='navBar__firstSection__value'>
+                                                                                {item.value}
+                                                                            </button>)
+                                                                })}
+                                                            </div>
+                                                            )
+                                            )}
+                                        </div>
                                     </div>
                                 {product.prices.map((pricing, indexx) => (indexx === 0) ? 
                                         <div className='cartNav__secondSection'>

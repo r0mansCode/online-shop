@@ -43,6 +43,29 @@ export class Cart extends Component {
                                                 </div>
                                             : null
                                         ))}
+                                    
+                                    <div>
+                                        {product.attributes.map(
+                                            attribute => (
+                                                (attribute.name === "Color") ?
+                                                        <div className='cart__firstSection__productAttributes'>
+                                                            {attribute.items.map(item =>{
+                                                                return (<button className='cart__firstSection__value' style={{backgroundColor: item.value, color: "#44014C"}}>
+                                                                            {item.displayValue}
+                                                                        </button>)
+                                                            })}
+                                                        </div>
+                                                        : 
+                                                        <div className='cart__firstSection__productAttributes'>
+                                                            {attribute.items.map(item =>{
+                                                                return (<button className='cart__firstSection__value'>
+                                                                            {item.value}
+                                                                        </button>)
+                                                            })}
+                                                        </div>
+                                                        )
+                                        )}
+                                    </div>
                                     </div>
 
                                 {product.prices.map((pricing, indexx) => (pricing.currency === this.props.currency.value) ? 
