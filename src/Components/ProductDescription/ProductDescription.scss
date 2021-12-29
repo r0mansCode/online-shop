@@ -11,7 +11,10 @@
         &__images{
             height: 150px;
             &:hover{
-                transform:scale(2);
+                opacity: 0.5;
+            }
+            &:checked{
+                height: 250px;
             }
         }
     }

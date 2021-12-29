@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import { withRouter } from "react-router";
 import './ProductDescription.scss';
 
-
 export class ProductDescription extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
+        this.handleGalery = this.handleGalery.bind(this);
         }
-    
+
+
+      handleGalery(event) {
+      event.preventDefault();
+    }
+
       handleClick(event) {
       event.preventDefault();
     }
+
 
       displayProducts(){
         function converter(input) {
@@ -24,13 +30,17 @@ export class ProductDescription extends Component {
             return data.category.products.map((product, index) => (
                 (product.id === this.props.match.params.id) ?
                     <div className='pdpMain'>
-                        <ol className='pdpMain__productGalery'>
+                        <div className='pdpMain__productGalery' onClick={this.handleGalery.bind(this)}>
                             {product.gallery.map((images, i) => { return(
                             <img key={i} className='pdpMain__productGalery__images' 
-                            src={images} alt="productPicture" />)})
+                            src={images} alt="productPicture" 
+                            onClick={() =>this.props.handleGalery(i)} />)})
                             }
-                        </ol>
-                        <img key={product.gallery} className='pdpMain__productImage' src={product.gallery[0]} alt="productPicture" />
+                        </div> 
+                        <img key={product.gallery} className='pdpMain__productImage' 
+                             src={product.gallery[this.props.galery]} 
+                             alt="productPicture" />
+                             
                             <div className='pdpMain__description'>
                             <section className='pdpMain__description__productName'>
                             {product.name} 
@@ -88,6 +98,7 @@ export class ProductDescription extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div className='pdpPaddings'>
                 {this.displayProducts()}
@@ -97,17 +108,3 @@ export class ProductDescription extends Component {
 }
 
 export default withRouter(ProductDescription);
-
-
-{/* <div>
-                                {product.attributes.map(attribute =>{return (
-                                    <div className='pdpMain__description__attributes'>
-                                        <div  className='pdpMain__description__attribute'>
-                                            {attribute.name}:
-                                        </div>
-                                        {attribute.items.map(item =>{
-                                            return (<button className='pdpMain__description__value'>
-                                                        {item.value}
-                                                    </button>)
-                                })}</div>)})}
-                            </div> */}

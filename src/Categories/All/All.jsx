@@ -11,11 +11,16 @@ export class All extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
+        this.handleGalery0 = this.handleGalery0.bind(this);
         }
     
       handleClick(event) {
       event.preventDefault();
     }
+
+    handleGalery0(event) {
+        event.preventDefault();
+      }
 
     displayCategory() {
         
@@ -36,7 +41,7 @@ export class All extends Component {
         } else {
             return data.category.products.map(product =>(
                 (product.category === deleteFirst(this.props.location.pathname)) || (this.props.location.pathname === "/") ?
-                    <Link className='productFrame' key={product.id} to={product.id}>
+                    <Link className='productFrame' key={product.id} to={product.id} >
                     <div>
                         {(product.inStock === true) ?
                         <div onClick={ this.handleClick.bind(this) }>
@@ -44,8 +49,8 @@ export class All extends Component {
                                 onClick={() =>product.prices.map((pricing, index) =>( (index === 0) ? this.props.handleClick(product.id, pricing.amount) : null))} />
                         </div> : null}
                         {(product.inStock === true) ?
-                        <img className='productImage' src={product.gallery[0]} alt="productPicture" /> :
-                        <div><img className='productImage__outOfStock' src={product.gallery[0]} alt="productPicture" />
+                        <img className='productImage' src={product.gallery[0]} alt="productPicture" onClick={() =>this.props.handleGalery0()} /> :
+                        <div><img className='productImage__outOfStock' src={product.gallery[0]} alt="productPicture" onClick={() =>this.props.handleGalery0()}/>
                         <div className='productImage__text'>OUT OF STOCK</div></div>}
                         <section className='productName'>
                             {product.name} {product.brand}
