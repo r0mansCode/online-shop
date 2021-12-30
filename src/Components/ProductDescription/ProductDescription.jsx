@@ -20,8 +20,10 @@ export class ProductDescription extends Component {
 
 
       displayProducts(){
-        function converter(input) {
-            return (input).replace(/<[^>]+>/g, '');
+        function convertToPlain(html){
+            var tempDivElement = document.createElement("div");
+            tempDivElement.innerHTML = html;
+            return tempDivElement.textContent || tempDivElement.innerText || "";
         }
         var data = this.props.data;
         if(data.loading){
@@ -85,7 +87,9 @@ export class ProductDescription extends Component {
                                     ADD TO CART
                                     </button>
                                     </div> : null}
-                                    <div key={index} className='pdpMain__description__productDescription'>{converter(product.description)}</div>
+                                    <div key={index} className='pdpMain__description__productDescription'>
+                                        {convertToPlain(product.description)}
+                                        </div>
                                 </div>
                             : null
                             ))}
