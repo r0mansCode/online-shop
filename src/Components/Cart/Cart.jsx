@@ -24,11 +24,11 @@ export class Cart extends Component {
         var data = this.props.data;
         var cartArray = this.props.productCart;
         var filteredCart = [...new Set(cartArray.map(datA => datA.id))];
-            return filteredCart.map((cartItem, ind) => { 
+            return filteredCart.map((cartItem, i) => { 
                 return (
-                    data.category.products.map((product, index) => (
+                    data.category.products.map((product, idata) => (
                         (product.id === cartItem) ?
-                                <div className='cart' key={index}> 
+                                <div className='cart' key={idata}> 
 
                                     <div className='cart__firstSection'>
                                         <div className='cart__firstSection__productName'>
@@ -71,8 +71,8 @@ export class Cart extends Component {
                                 {product.prices.map((pricing, indexx) => (pricing.currency === this.props.currency.value) ? 
                                         <div className='cart__secondSection'>
                                             <div className='cart__secondSection__buttons'>
-                                                <div onClick={ this.handleClick.bind(this) }>
-                                                    <button className='cart__secondSection__buttons__button' onClick={() =>this.props.handleClick(product.id, pricing.amount)}>
+                                                <div  onClick={ this.handleClick.bind(this) }>
+                                                    <button  className='cart__secondSection__buttons__button' onClick={() =>this.props.handleClick(product.id, pricing.amount)}>
                                                     +
                                                     </button>
                                                 </div>
@@ -80,13 +80,13 @@ export class Cart extends Component {
                                                     {a(cartArray.filter(item => item.id === product.id))}
                                                 </div>
                                                 <div onClick={ this.handleClickRemove.bind(this) }>
-                                                    <button className='cart__secondSection__buttons__button' onClick={() => this.props.handleClickRemove(ind)}>
+                                                    <button className='cart__secondSection__buttons__button' onClick={() => this.props.handleClickRemove(i)}>
                                                     -
                                                     </button>
                                                 </div>
                                             </div>
-                                                <div className='cart__secondSection__container' >
-                                                    <img className='cart__secondSection__image' src={product.gallery[0]} alt="productPicture" />
+                                                <div key={indexx} className='cart__secondSection__container' >
+                                                    <img key={indexx} className='cart__secondSection__image' src={product.gallery[0]} alt="productPicture" />
                                                 </div>
                                         </div> 
                                     : null )}

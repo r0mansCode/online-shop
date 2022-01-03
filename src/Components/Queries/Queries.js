@@ -51,6 +51,7 @@ query GetProduct ($id: String!){
           id
         }
       }
+      inStock
     }
   }
 `;
