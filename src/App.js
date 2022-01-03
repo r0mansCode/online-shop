@@ -19,6 +19,7 @@ class App extends Component {
       productCart: [],
       currency: {value: 'USD', label: <BiDollar/>, rate: 1},
       galery: [0],
+      selected: null
     }
     this.handleGalery = this.handleGalery.bind(this);
     this.handleGalery0 = this.handleGalery0.bind(this);
@@ -31,8 +32,8 @@ class App extends Component {
     this.setState({ galery: pic});
   }
 
-  handleGalery0 () {
-    this.setState({ galery: 0});
+  handleGalery0 (id) {
+    this.setState({ galery: 0, selected: id });
   }
 
 
@@ -52,6 +53,7 @@ class App extends Component {
 
   render() {
     console.log(this.state)
+    console.log(this.props)
   return (
     <Router >
     <div className='App'>
@@ -82,7 +84,8 @@ class App extends Component {
                             currency={this.state.currency}
                             galery={this.state.galery}
                             handleClick={this.handleClick}
-                            handleGalery={this.handleGalery} />
+                            handleGalery={this.handleGalery}
+                            productId={this.state.selected} />
       </Route>
       </Switch>
     </div>

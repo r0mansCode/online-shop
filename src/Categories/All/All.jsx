@@ -49,8 +49,8 @@ export class All extends Component {
                                 onClick={() =>product.prices.map((pricing, index) =>( (index === 0) ? this.props.handleClick(product.id, pricing.amount) : null))} />
                         </div> : null}
                         {(product.inStock === true) ?
-                        <img className='productImage' src={product.gallery[0]} alt="productPicture" onClick={() =>this.props.handleGalery0()} /> :
-                        <div><img className='productImage__outOfStock' src={product.gallery[0]} alt="productPicture" onClick={() =>this.props.handleGalery0()}/>
+                        <img className='productImage' src={product.gallery[0]} alt="productPicture" onClick={() =>this.props.handleGalery0(product.id)} /> :
+                        <div><img className='productImage__outOfStock' src={product.gallery[0]} alt="productPicture" onClick={() =>this.props.handleGalery0(product.id)}/>
                         <div className='productImage__text'>OUT OF STOCK</div></div>}
                         <section className='productName'>
                             {product.name} {product.brand}

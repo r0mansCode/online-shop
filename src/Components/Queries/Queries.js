@@ -30,9 +30,31 @@ query {
   }
 `
 
-// const getPDP = gql`
-// query {
+const getProductByIdQuery = gql `
+query GetProduct ($id: String!){
+    product(id: $id) {
+      id
+      name
+      brand
+      category
+      description
+      gallery
+      prices{
+        currency
+        amount
+      }
+      attributes {
+        name
+        items {
+          displayValue
+          value
+          id
+        }
+      }
+    }
+  }
+`;
 
-// }`
 
-export {getProductsQuery};
+
+export {getProductsQuery, getProductByIdQuery};

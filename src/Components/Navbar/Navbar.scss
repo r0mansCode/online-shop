@@ -23,8 +23,15 @@
         position: relative;
         margin-left: 70vw;
         margin-top: 5px;
-        text-align: center;
-        width: 75px;
+        text-align: left;
+        width: 110px;
+        border: none;
+        &__labelInitial {
+            line-height: 50%;
+        }
+        &__label {
+            line-height: 80%;
+        }
     }
 
     &__icon {

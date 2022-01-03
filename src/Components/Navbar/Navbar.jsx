@@ -15,11 +15,11 @@ function round(pricE) {return pricE.toFixed(2)};
 
 
 const options = [
-    {value: 'USD', label: <BiDollar/>, rate: 1},
-    {value: 'GBP', label: <BiPound/>, rate: 0.718786},
-    {value: 'JPY', label: <BiYen/>, rate: 107.99181},
-    {value: 'RUB', label: <BiRuble/>, rate: 75.6225089},
-    {value: 'AUD', label: <div>A<BiDollar/></div>, rate: 1.29 }
+    {value: 'USD', label: <div><BiDollar className='navBar__switcher__label'/>USD</div>, rate: 1},
+    {value: 'GBP', label: <div><BiPound className='navBar__switcher__label'/>GBP</div>, rate: 0.718786},
+    {value: 'JPY', label: <div><BiYen className='navBar__switcher__label'/>JPY</div>, rate: 107.99181},
+    {value: 'RUB', label: <div><BiRuble className='navBar__switcher__label'/>RUB</div>, rate: 75.6225089},
+    {value: 'AUD', label: <div>A<BiDollar className='navBar__switcher__label'/>AUSD</div>, rate: 1.29 }
 ];
 
 
@@ -120,9 +120,10 @@ export class Navbar extends Component {
 
     displayCurrencySwitcher(){
         return (
-            <div className='navBar__switcher'  onChange={ this.handleCurrency.bind(this) }>
-                <Select  options={options} 
-                        defaultValue={{ label: <BiDollar/>, value: 'USD' }} 
+            <div  onChange={ this.handleCurrency.bind(this) }>
+                <Select className='navBar__switcher'
+                        options={options} 
+                        defaultValue={{ label: <div ><BiDollar className='navBar__switcher__labelInitial'/>USD</div>, value: 'USD' }} 
                         onChange={this.props.handleCurrency} />
             </div>
         )
@@ -134,7 +135,6 @@ export class Navbar extends Component {
 
 
     render() {
-        console.log(this.props)
         return (
             <nav className="navBar">
                         <Link className="navBar__Category" to="/">All</Link>
